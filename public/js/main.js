@@ -2,20 +2,20 @@ router = function(){
 	var myrouter = {};
 	
 	myrouter.evalroute = function(){
-		if(app.isRegistered())
-		{
-			app.loadTemplate("login", initLogin);
+		if (app.isRegistered())
+		{		  
+		
+			if (app.isLoged()) {
+				app.loadTemplate("dashboard", dashboardInit)
+			} else {
+				app.loadTemplate("login", initLogin)
+			}			
+		
+		} else {
+			app.loadTemplate("registro", registroInit)
 		}
-		else if (app.isLoged())
-			{
-				app.loadTemplate("dashboard", dashboardInit);
-			}
-			else
-			{				
-		 		app.loadTemplate("registro", registroInit);
-			}
-		};
-
+		
+	};
 	
 	return myrouter;
 
